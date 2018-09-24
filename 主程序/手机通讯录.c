@@ -1,8 +1,9 @@
+#include<stdio.h>
+#include<stdlib.h>
 #include"comcode.h"
 #include"user.h"
 #include"file.h"
-#include<stdio.h>
-#include<stdlib.h>
+
 
 
 void menu()
@@ -210,8 +211,9 @@ void M1(person per[])
 			for (j = 0; j < 20; j++)
 			{
 				if (per[i].SocialInf[j].bool != 1)
-					break;
-				printf("%d¡¢%s:%s\n", j + 1, per[i].SocialInf[j].name, per[i].SocialInf[j].information);
+					continue;
+				else
+					printf("%d¡¢%s:%s\n", j + 1, per[i].SocialInf[j].name, per[i].SocialInf[j].information);
 			}
 			break;
 		}
