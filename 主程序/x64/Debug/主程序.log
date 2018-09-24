@@ -1,6 +1,6 @@
-﻿  手机通讯录.c
-<<<<<<< HEAD
+﻿  comcode.c
+  file.c
+  user.c
+  手机通讯录.c
+  正在生成代码...
   主程序.vcxproj -> D:\Github\jijijijij\x64\Debug\主程序.exe
-=======
-  主程序.vcxproj -> E:\C语言实践项目\主程序\jijijijij\x64\Debug\主程序.exe
->>>>>>> f52806bb5b993f00aa031169f6357ef5dbfcae9a

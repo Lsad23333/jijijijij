@@ -22,7 +22,7 @@ typedef struct _SocialInformation
 	
 }SocialInformation;
 
-typedef struct members
+typedef struct _members
 {
 	int bool ;
 	int mem[100];

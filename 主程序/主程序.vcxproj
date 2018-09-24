@@ -95,12 +95,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-<<<<<<< HEAD
       <AdditionalOptions>/D  _CRT_SECURE_NO_WARNINGS
  %(AdditionalOptions)</AdditionalOptions>
-=======
-      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
->>>>>>> f52806bb5b993f00aa031169f6357ef5dbfcae9a
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
