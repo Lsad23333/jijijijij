@@ -5,5 +5,8 @@
 /.vs/主程序/v15/Browse.VC.opendb
 .vs/主程序/v15/.suo
 *.db
-*.db
-.vs/主程序/v15/.suo
+*.idb
+*.log
+*.pdb
+*.ilk
+Debug/
