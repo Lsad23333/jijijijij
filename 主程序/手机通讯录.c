@@ -36,44 +36,43 @@ void commenu()
 }
 void M2_1(person per[], int n)
 {
-	
-	int i,  findnum, f[NUM];
+
+	int i, findnum, f[NUM];
 	int  chioce;
 	person p;
 	do
 	{
 		menu2_1();
 		scanf("%d", &chioce);
-	
-			switch (chioce)
+		switch (chioce)
+		{
+		case 1:
+			printf("请输入联系人姓名\n");
+			scanf("%s", &p.inf.name);
+			break;
+		case 2:
+			printf("请输入联系人电话号码\n");
+			scanf("%s", p.inf.phonenumber[0]);
+			break;
+		case 0:
+			break;
+		}
+		if (chioce >= 1 && chioce <= 2)
+		{
+			findnum = search(per, n, p, chioce, f);
+			if (findnum)
 			{
-			case 1:
-				printf("请输入联系人姓名\n");
-				scanf("%s", &p.inf.name);
-				break;
-			case 2:
-				printf("请输入联系人电话号码\n");
-				scanf("%s", p.inf.phonenumber[0]);
-				break;
-			case 0:
-				break;
+				for (i = 0; i < findnum; i++)
+					printout(&per[f[i]], 1);
 			}
-			if (chioce >= 1 && chioce <= 2)
-			{
-				findnum = search(per, n, p, chioce, f);
-				if (findnum)
-				{
-					for (i = 0; i < findnum; i++)
-						printout(&per[f[i]], 1);
-				}
-				else
-					printf("无法找到\n");
-			}
-		
-		
+			else
+				printf("无法找到\n");
+		}
+
+
 	} while (chioce);
 }
-	
+
 void M2_2(person per[], int n)
 {
 	int   findnum, f[NUM];
@@ -98,7 +97,7 @@ void M2_2(person per[], int n)
 		case 0:
 			break;
 		}
-		if (chioce >= 1 && chioce <=2)
+		if (chioce >= 1 && chioce <= 2)
 		{
 			findnum = search(per, n, p, chioce, f);
 			if (findnum)
@@ -114,7 +113,7 @@ void M2_2(person per[], int n)
 	} while (chioce);
 }
 
-void M2_3(person per[],int n)
+void M2_3(person per[], int n)
 {
 	int   findnum, f[NUM];
 	int chioce;
@@ -154,7 +153,7 @@ void M2_3(person per[],int n)
 }
 
 
-int M2(person per[],int n)
+int M2(person per[], int n)
 {
 	int chioce;
 	person p;
@@ -178,7 +177,7 @@ int M2(person per[],int n)
 		}
 
 
-	} while (chioce );
+	} while (chioce);
 	return n;
 }
 
@@ -239,14 +238,14 @@ void M3(person per[], int n)
 			printf("请输入联系人姓名\n");
 			scanf("%s", &p.inf.name);
 			break;
-			case 2:
+		case 2:
 			printf("请输入联系人电话号码\n");
 			scanf("%s", p.inf.phonenumber[0]);
 			break;
 		case 0:
 			break;
 		}
-		if (chioce >= 1 && chioce <=2)
+		if (chioce >= 1 && chioce <= 2)
 		{
 			findnum = search(per, n, p, chioce, f);
 			if (findnum)
@@ -266,7 +265,7 @@ void M3(person per[], int n)
 }
 
 
-int runmain(person per[],int n,int chioce)
+int runmain(person per[], int n, int chioce)
 {
 	switch (chioce)
 	{
@@ -307,11 +306,6 @@ int main()
 				continue;
 			}
 		}
-		if (chioce >= 0 && chioce <= 3)
-			n = runmain(per, n, chioce);
-		else
-			printf("输入错误！请输入正确的数字！\n");
-				continue;
 	} while (chioce);
 	saveFile(per, n);
 	return 0;
