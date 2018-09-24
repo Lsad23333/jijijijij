@@ -3,10 +3,10 @@
 #include "user.h"
 
 
-int createFlie(person per[]);
+int createFlie(person *per);
 
-int readFile(person per[]);
+int readFile(person *per);
 
-void saveFile(person per[], int n);
+void saveFile(person *per, int n);
 
-void output(person per[], int n);
+void output(person *per, int n);

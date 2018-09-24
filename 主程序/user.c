@@ -136,7 +136,7 @@ int read(person *per, int n)
 }
 
 //查找联系人
-int search(person per[], int n, person p, int condition, int a[])
+int search(person *per, int n, person p, int condition, int a[])
 {
 	int i, j = 0, find = 0;
 	for (i = 0; i < n; i++)
@@ -215,7 +215,7 @@ int  equal(person per1, person per2, int n)
 
 
 //删除联系人
-int delete(person per[], int n, int condition)
+int delete(person *per, int n, int condition)
 {
 	int i;
 	for (i = condition; i < n - 1; i++)
@@ -226,7 +226,7 @@ int delete(person per[], int n, int condition)
 }
 
 //修改联系人信息
-void change(person per[], int condition)
+void change(person *per, int condition)
 {
 	person p;
 	printf("请重设该联系人的信息\n");

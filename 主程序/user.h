@@ -48,19 +48,19 @@ typedef  struct _person
 
  
 int read(person *per, int n);//读取
-int insertper(person per[], int n, person p);//插入联系人
-int search(person per[], int n,person p,int condition, int a[]);//查找联系人
+int insertper(person *per, int n, person p);//插入联系人
+int search(person *per, int n,person p,int condition, int a[]);//查找联系人
 int  equal(person per1, person per2, int n);//判断是否为某种属性相同
 void printout(person *per, int n);//打印
-int delete(person per[], int n, int condition);//删除联系人
-void change(person per[], int condition);//修改联系人信息
+int delete(person *per, int n, int condition);//删除联系人
+void change(person *per, int condition);//修改联系人信息
 /*
 void printout(person *per, int n);//打印
 int  equal(person per1, person per2, int n);//判断是否为某种属性相同
-int search(person per[], int n, person man, int condition, int a[]);//查找联系人
-int insertper(person per[], int n, person p);//插入联系人
-int change(person per[], int n, person p);//修改联系人信息
-int delete(person per[], int n, person p);//删除联系人
+int search(person *per, int n, person man, int condition, int a[]);//查找联系人
+int insertper(person *per, int n, person p);//插入联系人
+int change(person *per, int n, person p);//修改联系人信息
+int delete(person *per, int n, person p);//删除联系人
 */
 
 

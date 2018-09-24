@@ -1,6 +1,6 @@
 #include"file.h"
 #include"user.h"
-int createFlie(person per[])
+int createFlie(person *per)
 {
 	FILE *fp;
 	
@@ -17,7 +17,7 @@ int createFlie(person per[])
 }
 
 
-int readFile(person per[])
+int readFile(person *per)
 {
 	FILE *fp;
 	int i = 0;
@@ -36,7 +36,7 @@ int readFile(person per[])
 	return i;
 }
 
-void saveFile(person per[], int n)
+void saveFile(person *per, int n)
 {
 	FILE *fp;
 	if ((fp = fopen("d:\\person.dat", "wb")) == NULL)
@@ -47,7 +47,7 @@ void saveFile(person per[], int n)
 	fclose(fp);
 }
 
-void output(person per[], int n)
+void output(person *per, int n)
 {
 	FILE*fp;
 	int j;
