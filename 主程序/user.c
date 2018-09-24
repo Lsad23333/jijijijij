@@ -98,7 +98,7 @@ int read(person *per, int n)
 				scanf("%s", &ch0);
 				strcpy(per->SocialInf[a-1].name, ch0);
 				printf("请输入详细信息\n");
-				scanf("%s", &ch0);
+				scanf("%s\n", &ch0);
 				strcpy(per->SocialInf[a-1].information, ch0);
 				per->SocialInf[a-1].bool = 1;
 				j++;
@@ -133,6 +133,7 @@ int read(person *per, int n)
 		}
 	}
 		//以下代码用于控制
+	
 	//system("pause");//放于return之前（勿动）
 	return i;
 }
