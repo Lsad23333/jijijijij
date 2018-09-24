@@ -181,7 +181,7 @@ int M2(person *per, int n)
 	return n;
 }
 
-void M1(person per[])
+void M1(person *per)
 {
 	int i, j;
 	for (i = 1; i < readFile(per); i++)
@@ -221,7 +221,7 @@ void M1(person per[])
 
 }
 
-void M3(person per[], int n)
+void M3(person *per, int n)
 {
 	int   findnum, f[NUM];
 	int chioce;
@@ -265,7 +265,7 @@ void M3(person per[], int n)
 }
 
 
-int runmain(person per[], int n, int chioce)
+int runmain(person *per, int n, int chioce)
 {
 	switch (chioce)
 	{

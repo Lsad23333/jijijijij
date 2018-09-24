@@ -7,10 +7,9 @@
 
 //从用户读取联系人信息
 int read(person *per, int n)
-
 {
-	
-	
+
+
 	char SocialInformation[][50] = { "QQ","微信","电子邮箱","博客" ,"微博","Facebook","twitter" };
 	int a;
 	int i, j;//j为分组的循环的控制量
@@ -28,14 +27,12 @@ int read(person *per, int n)
 		for (num = 0; num < N; num++)
 		{
 			//printf("%d", JudgeAdd());
-			
+
 			if (JudgeAdd() == 0)
 			{
 				strcpy(per->inf.phonenumber[num], "NULL");
 				break;
-				}
-					
-				
+			}
 			printf("请输入联系人电话号码：\n");
 			scanf("%s", &ch0);
 			strcpy(per->inf.phonenumber[num], ch0);
@@ -44,10 +41,10 @@ int read(person *per, int n)
 		}
 		//以下代码用于输入工作单位
 		printf("请输入联系人工作单位");
-		while(1)
+		while (1)
 		{
-		
-			
+
+
 			if (JudgeAdd() == 0)
 			{
 				break;
@@ -65,14 +62,14 @@ int read(person *per, int n)
 		j = 7;
 		for (num = 0; num < j; num++)
 		{
-			
+
 			strcpy(per->SocialInf[num].name, SocialInformation[num]);
 		}
-		while(1)
-			{
+		while (1)
+		{
 			for (num = 0; num < j; num++)
 			{
-				printf("%d、%s\n",num + 1, per->SocialInf[num].name);
+				printf("%d、%s\n", num + 1, per->SocialInf[num].name);
 			}
 			printf("%d、新建\n", num + 1);
 			printf("0、退出\n");
@@ -96,17 +93,17 @@ int read(person *per, int n)
 				per->SocialInf[a].bool = 1;
 				printf("请输入名称\n");
 				scanf("%s", &ch0);
-				strcpy(per->SocialInf[a-1].name, ch0);
+				strcpy(per->SocialInf[a - 1].name, ch0);
 				printf("请输入详细信息\n");
 				scanf("%s", &ch0);
-				strcpy(per->SocialInf[a-1].information, ch0);
-				per->SocialInf[a-1].bool = 1;
+				strcpy(per->SocialInf[a - 1].information, ch0);
+				per->SocialInf[a - 1].bool = 1;
 				j++;
 				continue;
 			}
 
-			
-			for(num=1;num<(j+1);num++)
+
+			for (num = 1; num < (j + 1); num++)
 			{
 				if (a == num)
 				{
@@ -117,8 +114,8 @@ int read(person *per, int n)
 					//printf("%s\n", per[i].SocialInf[(a - 1)].information);
 				}
 				break;
-			}	
 			}
+		}
 		//以下代码用于控制与新建分组
 		printf("请为该联系人添加分组\n");
 		reset(per, 1);
@@ -132,14 +129,14 @@ int read(person *per, int n)
 			}
 		}
 	}
-		//以下代码用于控制
-	
-	//system("pause");//放于return之前（勿动）
+	//以下代码用于控制
+
+//system("pause");//放于return之前（勿动）
 	return i;
 }
 
 //查找联系人
-int search(person per[], int n,person p,int condition, int a[])
+int search(person per[], int n, person p, int condition, int a[])
 {
 	int i, j = 0, find = 0;
 	for (i = 0; i < n; i++)
@@ -175,10 +172,10 @@ void printout(person *per, int n)
 		}
 		if (per[i].inf.workmem == 1)
 		{
-            printf("工作地点：%s\n", per[i].inf.workplace);
+			printf("工作地点：%s\n", per[i].inf.workplace);
 			printf("工作地点：%d\n", per[i].inf.workmem);
 		}
-		
+
 		while (1)
 		{
 			for (j = 0; j < 20; j++)
@@ -211,7 +208,7 @@ int  equal(person per1, person per2, int n)
 			if (strcmp(per1.inf.phonenumber[i], per2.inf.phonenumber[0]) == 0)
 				return 1;
 		}
-			return 0;
+		return 0;
 	}
 	return 1;
 }
@@ -222,14 +219,14 @@ int delete(person per[], int n, int condition)
 {
 	int i;
 	for (i = condition; i < n - 1; i++)
-		per[i] = per[i+1];
+		per[i] = per[i + 1];
 
 	n--;
 	return n;
 }
 
 //修改联系人信息
-void change(person per[],int condition)
+void change(person per[], int condition)
 {
 	person p;
 	printf("请重设该联系人的信息\n");
@@ -239,7 +236,7 @@ void change(person per[],int condition)
 
 
 //插入联系人
-int insertper(person per[], int n, person p)//插入联系人
+int insertper(person *per, int n, person p)//插入联系人
 {
 	int i;
 	for (i = 0; i < n; i++)
@@ -247,22 +244,22 @@ int insertper(person per[], int n, person p)//插入联系人
 		if (strcmp(per[i].inf.name, p.inf.name) == 0)
 		{
 			printf("这个用户已经存在！请选择其他项目！\n");
-				return n;
+			return n;
 		}
 	}
 	strcpy(per[n].inf.name, p.inf.name);
-	per[n].inf.phonemem=p.inf.phonemem;
-	
+	per[n].inf.phonemem = p.inf.phonemem;
+
 	strcpy(per[n].inf.workplace, p.inf.workplace);
 	for (i = 0; i < 20; i++)
 	{
-	   strcpy(per[n].inf.phonenumber[i], p.inf.phonenumber[i]);
-       per[n].SocialInf[i].bool=p.SocialInf[i].bool;
-	   strcpy(per[n].SocialInf[i].name, p.SocialInf[i].name);
-	   strcpy(per[n].SocialInf[i].information, p.SocialInf[i].information);
-	   strcpy(per[n].group[i], p.group[i]);
+		strcpy(per[n].inf.phonenumber[i], p.inf.phonenumber[i]);
+		per[n].SocialInf[i].bool = p.SocialInf[i].bool;
+		strcpy(per[n].SocialInf[i].name, p.SocialInf[i].name);
+		strcpy(per[n].SocialInf[i].information, p.SocialInf[i].information);
+		strcpy(per[n].group[i], p.group[i]);
 	}
-	
+
 	n++;
 	return n;
 }
