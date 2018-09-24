@@ -306,6 +306,10 @@ int main()
 				continue;
 			}
 		}
+		else {
+			while (getchar()!='\n');
+			//fflush(stdin);
+		}
 	} while (chioce);
 	saveFile(per, n);
 	return 0;
