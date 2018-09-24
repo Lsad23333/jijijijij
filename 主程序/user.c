@@ -98,7 +98,7 @@ int read(person *per, int n)
 				scanf("%s", &ch0);
 				strcpy(per->SocialInf[a-1].name, ch0);
 				printf("ÇëÊäÈëÏêÏ¸ÐÅÏ¢\n");
-				scanf("%s\n", &ch0);
+				scanf("%s", &ch0);
 				strcpy(per->SocialInf[a-1].information, ch0);
 				per->SocialInf[a-1].bool = 1;
 				j++;

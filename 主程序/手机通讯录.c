@@ -294,7 +294,6 @@ int main()
 	{
 		menu();
 		printf("输入数字以继续\n");
-		scanf("%d", &chioce);
 		if (scanf("%d", &chioce) == 1)
 		{
 			if (chioce >= 0 && chioce <= 3)
