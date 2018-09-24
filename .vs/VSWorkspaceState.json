@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\主程序"
   ],
-  "SelectedNode": "\\主程序.sln",
+  "SelectedNode": "\\主程序\\comcode.c",
   "PreviewInSolutionExplorer": false
 }

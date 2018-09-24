@@ -295,11 +295,24 @@ int main()
 		menu();
 		printf("输入数字以继续\n");
 		scanf("%d", &chioce);
+		if (scanf("%d", &chioce) == 1)
+		{
+			if (chioce >= 0 && chioce <= 3)
+				n = runmain(per, n, chioce);
+			else
+			{
+				printf("输入错误！请输入正确的数字！\n");
+				continue;
+			}
+		}
 		if (chioce >= 0 && chioce <= 3)
 			n = runmain(per, n, chioce);
 		else
 			printf("输入错误！请输入正确的数字！\n");
+				continue;
 	} while (chioce);
 	saveFile(per, n);
 	return 0;
 }
+
+//if(scanf("%d", &chioce)==1)
