@@ -1,6 +1,6 @@
 #pragma once
-#ifndef 用户
-#define 用户
+//#ifndef 用户
+//#define 用户
 #include<string.h>
 #define N 20
 #define NUM 200
@@ -76,4 +76,4 @@ int delete(person per[], int n, person p);//删除联系人
 
 
 
-#endif//勿删
+//#endif//勿删
