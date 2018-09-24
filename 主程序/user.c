@@ -19,6 +19,7 @@ int read(person *per, int n)
 	for (i = 0; i < n; i++)
 	{
 		per->inf.phonemem = 0;
+		per->inf.workmem = 0;
 		printf("请输入联系人信息\n");
 		printf("请输入联系人姓名：");
 		scanf("%s", &per->inf.name);
@@ -46,16 +47,18 @@ int read(person *per, int n)
 		{
 			if (JudgeAdd() == 0)
 			{
+				strcpy(per->inf.workplace, "NULL");
 				break;
 			}
 			printf("请输入联系人工作单位\n");
 			scanf("%s", &ch0);
 			strcpy(per->inf.workplace, ch0);
-			per->inf.workmem = 1;
+			per->inf.workmem++;
+			break;
 			//printf("%d", per[i].inf.workmem);
 			//printf("%s", per[i].inf.workplace);
-			break;
 		}
+	
 		//以下代码用于预设并选择社交信息
 		printf("请选择想要填的其他信息\n");
 		j = 7;
@@ -75,8 +78,7 @@ int read(person *per, int n)
 			scanf("%d", &a);
 			/*
 			b = num + 1;
-			if (num >= '0'&&num <= 'b')
-				;
+			if (num >= '0'&&num <= 'b');
 			else
 			{
 				printf("请输入正确的数字！\n");
@@ -88,7 +90,6 @@ int read(person *per, int n)
 
 			if (a == (j + 1))
 			{
-				per->SocialInf[a].bool = 1;
 				printf("请输入名称\n");
 				scanf("%s", &ch0);
 				strcpy(per->SocialInf[a - 1].name, ch0);
@@ -110,8 +111,9 @@ int read(person *per, int n)
 					strcpy(per->SocialInf[(a - 1)].information, ch0);
 					per->SocialInf[(a - 1)].bool = 1;
 					//printf("%s\n", per[i].SocialInf[(a - 1)].information);
+					break;
 				}
-				break;
+				
 			}
 		}
 		//以下代码用于控制与新建分组
@@ -119,13 +121,22 @@ int read(person *per, int n)
 		reset(per, 1);
 		while (1)
 		{
-			if (JudgeAdd() == 0)
-				break;
-			if (JudgeAdd() == 1)
+			for (a = 0; a < 20; a++)
 			{
-
+				if (JudgeAdd() == 0)
+					break;
+				else
+				{
+					printf("请输入组名\n");
+					scanf("%s", &ch0);
+					strcpy(per->group[a], ch0);
+					//printf("%s", per->group[a]);
+					continue;
+				}
 			}
+			break;
 		}
+		break;
 	}
 	//以下代码用于控制
 
@@ -168,10 +179,8 @@ void printout(person *per, int n)
 			}
 			break;
 		}
-		if (per[i].inf.workmem == 1)
 		{
 			printf("工作地点：%s\n", per[i].inf.workplace);
-			printf("工作地点：%d\n", per[i].inf.workmem);
 		}
 
 		while (1)
@@ -179,7 +188,7 @@ void printout(person *per, int n)
 			for (j = 0; j < 20; j++)
 			{
 				if (per[i].SocialInf[j].bool != 1)
-					break;
+					continue;
 				printf("%d、%s:%s\n", j + 1, per[i].SocialInf[j].name, per[i].SocialInf[j].information);
 			}
 			break;
@@ -208,6 +217,17 @@ int  equal(person per1, person per2, int n)
 		}
 		return 0;
 	}
+	if (n == 3)
+	{
+		for (i = 0; i < 20; i++)
+		{
+			if (strcmp(per1.group[i], "NULL") == 0)
+				break;
+			if (strcmp(per1.group[i], per2.group[i]) == 0)
+				return 1;
+		}
+		return 0;
+	}
 	return 1;
 }
 
@@ -216,9 +236,9 @@ int  equal(person per1, person per2, int n)
 int delete(person *per, int n, int condition)
 {
 	int i;
-	for (i = condition; i < n - 1; i++)
+	for (i = condition; i < n -1 ; i++)
 		per[i] = per[i + 1];
-
+	per[i] = per[i + 1];
 	n--;
 	return n;
 }

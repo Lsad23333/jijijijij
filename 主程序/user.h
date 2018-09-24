@@ -28,11 +28,6 @@ typedef struct _members
 	int mem[100];
 }members;
 
-
-
-
-
-
 typedef  struct _person
    {
 	  baseinformation inf;

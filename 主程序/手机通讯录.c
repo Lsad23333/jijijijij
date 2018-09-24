@@ -27,6 +27,13 @@ void menu2_1()
 {
 	printf("***********1、按姓名查询***********\n");
 	printf("***********2、按号码查询***********\n");
+	printf("***********3、按组别查询***********\n");
+	printf("************0、返回上级************\n");
+}
+void menu2_1_1()
+{
+	printf("***********1、按姓名查询***********\n");
+	printf("***********2、按号码查询***********\n");
 	printf("************0、返回上级************\n");
 }
 
@@ -54,22 +61,87 @@ void M2_1(person *per, int n)
 			printf("请输入联系人电话号码\n");
 			scanf("%s", p.inf.phonenumber[0]);
 			break;
+		case 3:
+			printf("请输入组别\n");
+			scanf("%s", &p.group[0]);
+			break;
 		case 0:
 			break;
 		}
+
+		if (chioce == 0)
+		{
+			break;
+		}
+
+
+		if (chioce >= 1 && chioce <= 3)
+		{
+			findnum = search(per, n, p, chioce, f);
+			if (findnum)
+			{
+				for (i = 0; i < findnum; i++)
+					printout(&per[f[i]], findnum);
+			}
+			else
+			{
+				printf("无法找到\n");
+				continue;
+			}
+		}
+
+		else 
+		{
+			//printf("输入错误！请输入正确的数字！\n");
+			while (getchar() != '\n');
+		}
+	} while (chioce);
+}
+
+void M2_1_1(person *per, int n)
+{
+
+	int i, findnum, f[NUM];
+	int  chioce;
+	person p;
+	do
+	{
+		menu2_1_1();
+		scanf("%d", &chioce);
+		switch (chioce)
+		{
+		case 1:
+			printf("请输入联系人姓名\n");
+			scanf("%s", &p.inf.name);
+			break;
+		case 2:
+			printf("请输入联系人电话号码\n");
+			scanf("%s", p.inf.phonenumber[0]);
+			break;
+		case 0:
+			break;
+		}
+
+		if (chioce == 0)
+		{
+			break;
+		}
+
+
 		if (chioce >= 1 && chioce <= 2)
 		{
 			findnum = search(per, n, p, chioce, f);
 			if (findnum)
 			{
 				for (i = 0; i < findnum; i++)
-					printout(&per[f[i]], 1);
+					printout(&per[f[i]], findnum);
 			}
 			else
+			{
 				printf("无法找到\n");
+				continue;
+			}
 		}
-
-
 	} while (chioce);
 }
 
@@ -81,7 +153,7 @@ void M2_2(person *per, int n)
 	do
 	{
 		commenu();
-		menu2_1();
+		menu2_1_1();
 		scanf("%d", &chioce);
 
 		switch (chioce)
@@ -97,6 +169,10 @@ void M2_2(person *per, int n)
 		case 0:
 			break;
 		}
+		if (chioce == 0)
+		{
+			break;
+		}
 		if (chioce >= 1 && chioce <= 2)
 		{
 			findnum = search(per, n, p, chioce, f);
@@ -104,14 +180,18 @@ void M2_2(person *per, int n)
 			{
 				delete(per, n, f[0]);
 				printf("删除成功\n");
+				saveFile(per, n);
 			}
 			else
-				printf("无法找到\n");
+			{
+                printf("无法找到\n");
+				continue;
+			}
 		}
-		else {
-			printf("输入错误！请输入正确的数字！\n");
+		else 
+		{
+			//printf("输入错误！请输入正确的数字！\n");
 			while (getchar() != '\n');
-			//fflush(stdin);
 		}
 
 	} while (chioce);
@@ -125,7 +205,7 @@ void M2_3(person *per, int n)
 	do
 	{
 		commenu();
-		menu2_1();
+		menu2_1_1();
 		scanf("%d", &chioce);
 
 		switch (chioce)
@@ -151,8 +231,8 @@ void M2_3(person *per, int n)
 			else
 				printf("无法找到\n");
 		}
-		else {
-			printf("输入错误！请输入正确的数字！\n");
+		else 
+		{
 			while (getchar() != '\n');
 			//fflush(stdin);
 		}
@@ -177,15 +257,17 @@ int M2(person *per, int n)
 		case 2:M2_2(per, n);
 			break;
 		case 3:M2_3(per, n);
+			saveFile(per, n);
 			break;
 		case 4:read(&p, 1);
-			n = insertper(per, n, p);
+			n = insertper(per, readFile(per), p);
+			saveFile(per, n);
 			break;
 
 		}
-		if (chioce <= 0 && chioce >= 4)
+		if (chioce >= 0 && chioce <=4)
 		{
-			printf("输入错误！请输入正确的数字！\n");
+			;
 		}
 		else {
 			printf("输入错误！请输入正确的数字！\n");
@@ -201,6 +283,8 @@ void M1(person *per)
 	int i, j;
 	for (i = 1; i < readFile(per); i++)
 	{
+		if ((strcmp(per[i].inf.name, "") == 0))
+			continue;
 		printf("姓名：%s\n", per[i].inf.name);
 		while (1)
 		{
@@ -215,11 +299,9 @@ void M1(person *per)
 			}
 			break;
 		}
-		if (per[i].inf.workmem == 1)
 		{
 			printf("工作地点：%s\n", per[i].inf.workplace);
 		}
-
 		while (1)
 		{
 			for (j = 0; j < 20; j++)
@@ -231,9 +313,24 @@ void M1(person *per)
 			}
 			break;
 		}
+		while (1)
+		{
+			for (j = 0; j < 20; j++)
+			{
+				if (strcmp(per[i].group[j], "NULL") == 0)
+					break;
+				else
+				{
+					printf("所属分组为：\n");
+					printf("%s\n", per[i].group[j]);
+				}
+			}
+			break;
+		}
+        printf("****************************************************************\n");
 	}
 
-
+	
 }
 
 void M3(person *per, int n)
@@ -244,7 +341,7 @@ void M3(person *per, int n)
 	do
 	{
 		commenu();
-		menu2_1();
+		menu2_1_1();
 		scanf("%d", &chioce);
 
 		switch (chioce)
@@ -274,10 +371,13 @@ void M3(person *per, int n)
 			else
 				printf("无法找到\n");
 		}
+		if (chioce == 0)
+		{
+			break;
+		}
 		else {
 			printf("输入错误！请输入正确的数字！\n");
 			while (getchar() != '\n');
-			//fflush(stdin);
 		}
 
 	} while (chioce);
@@ -328,7 +428,6 @@ int main()
 		else {
 			printf("输入错误！请输入正确的数字！\n");
 			while (getchar() != '\n');
-			//fflush(stdin);
 		}
 	} while (chioce);
 	saveFile(per, n);

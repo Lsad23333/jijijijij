@@ -56,7 +56,10 @@ void output(person *per, int n)
 	strcpy(per[n].inf.phonenumber[0], str);
 	strcpy(".txt",str);
 	*/
-	fp = fopen("D:\\per[n].inf.phonenumber[0].txt", "w+");
+	char nam[30];
+	sprintf(nam,"%s%s%s","D:\\",per[n].inf.phonenumber,".txt");
+	fp = fopen( nam , "w+");
+	
 	if (fp == 0)
 	{
 		printf("文件错误！\n");
@@ -76,7 +79,6 @@ void output(person *per, int n)
 			}
 			break;
 		}
-		if (per[n].inf.workmem == 1)
 		{
 			fprintf(fp,"工作地点：%s\n", per[n].inf.workplace);
 		}
@@ -88,6 +90,20 @@ void output(person *per, int n)
 				if (per[n].SocialInf[j].bool != 1)
 					break;
 				fprintf(fp,"%d、%s:%s\n", j + 1, per[n].SocialInf[j].name, per[n].SocialInf[j].information);
+			}
+			break;
+		}
+		while (1)
+		{
+			for (j = 0; j < 20; j++)
+			{
+				if (strcmp(per[n].group[j], "NULL") == 0)
+					break;
+				else
+				{
+					fprintf(fp,"所属分组为：\n");
+					fprintf(fp,"%d、%s\n",j+1, per[n].group[j]);
+				}
 			}
 			break;
 		}
