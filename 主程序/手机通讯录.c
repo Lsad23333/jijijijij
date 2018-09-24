@@ -108,7 +108,11 @@ void M2_2(person *per, int n)
 			else
 				printf("无法找到\n");
 		}
-
+		else {
+			printf("输入错误！请输入正确的数字！\n");
+			while (getchar() != '\n');
+			//fflush(stdin);
+		}
 
 	} while (chioce);
 }
@@ -147,7 +151,11 @@ void M2_3(person *per, int n)
 			else
 				printf("无法找到\n");
 		}
-
+		else {
+			printf("输入错误！请输入正确的数字！\n");
+			while (getchar() != '\n');
+			//fflush(stdin);
+		}
 
 	} while (chioce);
 }
@@ -175,7 +183,15 @@ int M2(person *per, int n)
 			break;
 
 		}
-
+		if (chioce <= 0 && chioce >= 4)
+		{
+			printf("输入错误！请输入正确的数字！\n");
+		}
+		else {
+			printf("输入错误！请输入正确的数字！\n");
+			while (getchar() != '\n');
+			//fflush(stdin);
+		}
 	} while (chioce);
 	return n;
 }
@@ -258,7 +274,11 @@ void M3(person *per, int n)
 			else
 				printf("无法找到\n");
 		}
-
+		else {
+			printf("输入错误！请输入正确的数字！\n");
+			while (getchar() != '\n');
+			//fflush(stdin);
+		}
 
 	} while (chioce);
 }
@@ -307,7 +327,7 @@ int main()
 		}
 		else {
 			printf("输入错误！请输入正确的数字！\n");
-			while (getchar()!='\n');
+			while (getchar() != '\n');
 			//fflush(stdin);
 		}
 	} while (chioce);
