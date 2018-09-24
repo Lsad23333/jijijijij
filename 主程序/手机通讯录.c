@@ -34,7 +34,7 @@ void commenu()
 {
 	printf("请查找需要操作的联系人\n");
 }
-void M2_1(person per[], int n)
+void M2_1(person *per, int n)
 {
 
 	int i, findnum, f[NUM];
@@ -73,7 +73,7 @@ void M2_1(person per[], int n)
 	} while (chioce);
 }
 
-void M2_2(person per[], int n)
+void M2_2(person *per, int n)
 {
 	int   findnum, f[NUM];
 	int chioce;
@@ -113,7 +113,7 @@ void M2_2(person per[], int n)
 	} while (chioce);
 }
 
-void M2_3(person per[], int n)
+void M2_3(person *per, int n)
 {
 	int   findnum, f[NUM];
 	int chioce;
@@ -153,7 +153,7 @@ void M2_3(person per[], int n)
 }
 
 
-int M2(person per[], int n)
+int M2(person *per, int n)
 {
 	int chioce;
 	person p;
@@ -307,6 +307,7 @@ int main()
 			}
 		}
 		else {
+			printf("输入错误！请输入正确的数字！\n");
 			while (getchar()!='\n');
 			//fflush(stdin);
 		}
