@@ -176,7 +176,6 @@ int M2(person *per, int n)
 
 		}
 
-
 	} while (chioce);
 	return n;
 }

@@ -38,13 +38,12 @@ int read(person *per, int n)
 			strcpy(per->inf.phonenumber[num], ch0);
 			per->inf.phonemem++;
 			//printf("%s", per[i].inf.phonenumber[num]);
+			break;
 		}
 		//以下代码用于输入工作单位
 		printf("请输入联系人工作单位");
 		while (1)
 		{
-
-
 			if (JudgeAdd() == 0)
 			{
 				break;
@@ -62,7 +61,6 @@ int read(person *per, int n)
 		j = 7;
 		for (num = 0; num < j; num++)
 		{
-
 			strcpy(per->SocialInf[num].name, SocialInformation[num]);
 		}
 		while (1)
@@ -110,7 +108,7 @@ int read(person *per, int n)
 					printf("请输入详细信息\n");
 					scanf("%s", &ch0);
 					strcpy(per->SocialInf[(a - 1)].information, ch0);
-					per->SocialInf[num].bool = 1;
+					per->SocialInf[(a - 1)].bool = 1;
 					//printf("%s\n", per[i].SocialInf[(a - 1)].information);
 				}
 				break;
