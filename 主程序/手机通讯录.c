@@ -264,8 +264,6 @@ void M3(person per[], int n)
 }
 
 
-
-person per[NUM];
 int runmain(person per[],int n,int chioce)
 {
 	switch (chioce)
@@ -280,9 +278,11 @@ int runmain(person per[],int n,int chioce)
 	return n;
 }
 person per[NUM];
+
 int main()
 {
 	int  n;
+	//sync test
 	int chioce;
 	n = readFile(per);
 	// sync test
