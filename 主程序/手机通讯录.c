@@ -282,6 +282,7 @@ person per[NUM];
 int main()
 {
 	int  n;
+	//sync test
 	int chioce;
 	n = readFile(per);
 	if (!n)
