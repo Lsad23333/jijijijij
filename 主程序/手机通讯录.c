@@ -279,9 +279,9 @@ int runmain(person per[],int n,int chioce)
 	}
 	return n;
 }
+person per[NUM];
 int main()
 {
-	person per[NUM];
 	int  n;
 	int chioce;
 	n = readFile(per);

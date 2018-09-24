@@ -5,7 +5,7 @@
 #define N 20
 #define NUM 200
 //定义基本信息
-typedef struct  baseinformation
+typedef struct  _baseinformation
 {
 	char name[100];
 	char workplace[200];
@@ -14,7 +14,7 @@ typedef struct  baseinformation
 	int  phonemem;
 }baseinformation;
 
-typedef struct SocialInformation
+typedef struct _SocialInformation
 {
 	int bool ;
 	char name[50];
@@ -33,7 +33,7 @@ typedef struct members
 
 
 
-typedef  struct person
+typedef  struct _person
    {
 	  baseinformation inf;
 	  SocialInformation SocialInf[20];
