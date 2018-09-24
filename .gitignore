@@ -11,3 +11,5 @@
 *.ilk
 Debug/
 .vs/
+主程序/x64/
+主程序/Debug/
