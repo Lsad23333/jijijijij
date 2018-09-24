@@ -265,7 +265,7 @@ void M3(person per[], int n)
 
 
 
-
+person per[NUM];
 int runmain(person per[],int n,int chioce)
 {
 	switch (chioce)
@@ -282,6 +282,10 @@ int runmain(person per[],int n,int chioce)
 person per[NUM];
 int main()
 {
+<<<<<<< HEAD
+=======
+	
+>>>>>>> f52806bb5b993f00aa031169f6357ef5dbfcae9a
 	int  n;
 	int chioce;
 	n = readFile(per);
