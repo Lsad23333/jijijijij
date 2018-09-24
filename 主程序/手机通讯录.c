@@ -285,6 +285,7 @@ int main()
 	int  n;
 	int chioce;
 	n = readFile(per);
+	// sync test
 	if (!n)
 	{
 		n = createFlie(per);
